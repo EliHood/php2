@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-    {{ URL::asset('css/main.css'); }}
+    {!! Html::style( asset('css/main.css')) !!}
 </head>
 <body>
 <div class="mycont">
