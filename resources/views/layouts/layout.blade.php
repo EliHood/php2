@@ -29,6 +29,12 @@
                 <li><a href="/login"> Login </a></li>
                 <li><a href="/register">Register</a></li>
 
+
+                @if(Auth::check())
+                <li><a href="{{ route('logout')}}">Logout</a></li>
+
+                @endif
+
             </ul>
         </div><!--/.nav-collapse -->
     </div>

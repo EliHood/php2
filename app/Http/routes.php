@@ -11,14 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/dashboard',[
+
+    'uses'=>'UserController@getDashboard',
+    'as'=> 'dashboard'
+
+]);
 
 
 Route::get('/register', function(){
     return view('register');
 });
+
+
 
 
 
@@ -29,11 +35,10 @@ Route::post('/signup',[
 
 ]);
 
-Route::get('/',[
-    'uses' => 'UserController@getWelcome',
-    'as' => 'welcome'
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
 
-]);
 
 Route::get('/login', function(){
     return view ('login');
@@ -47,6 +52,7 @@ Route::post('/signin',[
     'as' => 'signin'
 
 ]);
+
 
 Route::get('/logout',[
     'uses' => 'UserController@getLogout',

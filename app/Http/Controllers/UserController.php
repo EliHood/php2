@@ -5,15 +5,25 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
+
 use App\Http\Requests;
 
 class UserController extends Controller
 {
 
+    public function getDashboard()
+    {
+        $cookie = cookie('saw-dashboard', true, 15);
+
+        return view('dashboard')->withCookie($cookie);
+
+    }
+
     public function getWelcome()
     {
         return view('welcome');
     }
+
 
     public function userSignUp(Request $request)
     {
@@ -36,7 +46,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('welcome');
+        return redirect()->route('dashboard');
 
 
 
@@ -48,7 +58,7 @@ class UserController extends Controller
         $remember = $request->input('remember_me');
 
         if(Auth::attempt(['email'=> $request['email'], 'password' => $request['password']], $remember )){
-            return redirect()->route('welcome');
+            return redirect()->route('dashboard');
         }
 
         return redirect()->back();

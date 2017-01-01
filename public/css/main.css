@@ -38,6 +38,27 @@ i{
 }
 
 
+.right-nav{
+    width:210px;
+    left:0px;
+    top:0px;
+
+    background-color: tomato;
+    height:100%;
+    position:fixed;
+
+}
+
+.right-content{
+
+    padding:30px;
+
+}
+
+h2{
+    font-size:3.4em;
+    font-weight: 800;
+}
 
 footer{
     background-color: #fcf8e3;
