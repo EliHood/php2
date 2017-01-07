@@ -13,7 +13,7 @@
 
 
 Route::get('/dashboard',[
-
+    'middleware'=>'auth',
     'uses'=>'UserController@getDashboard',
     'as'=> 'dashboard'
 
@@ -24,7 +24,32 @@ Route::get('/register', function(){
     return view('register');
 });
 
+Route::get('/{user}/profile', [
+    'uses' =>'UserController@getProfile',
+    'as' => 'user.profile',
+    'middleware' => 'auth'
+]);
 
+
+Route::get('/profile', [
+    'uses'=>'UserController@profile',
+    'middleware'=> 'auth',
+    'as'=> 'profile'
+
+]);
+
+
+
+
+Route::get('/members',[
+    'middleware' => 'auth',
+    'uses' => 'UserController@getUsers',
+    'as' => 'members'
+
+]);
+
+
+Route::post('/profile', 'UserController@update_avatar');
 
 
 
@@ -35,10 +60,12 @@ Route::post('/signup',[
 
 ]);
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [
+    'uses' => 'UserController@getWelcome',
+    'as' => 'home'
 
+
+]);
 
 Route::get('/login', function(){
     return view ('login');

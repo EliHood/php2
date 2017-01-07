@@ -71,3 +71,26 @@ footer{
 
 }
 
+#pro-img
+{
+    width:150px;
+    height:150px;
+    float:left;
+    border-radius:50%;
+    margin-right:25px;
+
+}
+
+#pro2-img{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    margin-right:10px;
+
+    float: left;
+
+}
+
+#member-box{
+    margin:20px 0px;
+}

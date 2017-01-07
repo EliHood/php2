@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use Image;
 
 use App\Http\Requests;
 
@@ -14,14 +14,25 @@ class UserController extends Controller
     public function getDashboard()
     {
         $cookie = cookie('saw-dashboard', true, 15);
-
-        return view('dashboard')->withCookie($cookie);
+        $user = new User();
+        return view('dashboard', array('user'=> Auth::user()), compact('users'))->withCookie($cookie);
 
     }
 
+
     public function getWelcome()
     {
-        return view('welcome');
+        $user = new User();
+        if (Auth::user()){
+            return redirect()->route('dashboard');
+        }
+        return view('welcome',  array('user'=> Auth::user()), compact('users') );
+    }
+
+    public function getUsers()
+    {
+        $users = User::all();
+        return view('members', array('user'=> Auth::user()), compact('users'));
     }
 
 
@@ -52,6 +63,17 @@ class UserController extends Controller
 
     }
 
+    public function profile()
+    {
+        $users = User::all();
+        return view('profile', compact('users') );
+    }
+
+    public function getProfile($user)
+    {
+        $user = User::where('username','=', $user)->first();
+        return view ('/profile')->withUser($user);
+    }
 
     public function postSignin(Request $request)
     {
@@ -68,5 +90,21 @@ class UserController extends Controller
     {
         Auth::logout();
         return redirect()->route('home');
+    }
+
+    public function update_avatar(Request $request)
+    {
+         if($request->hasFile('avatar')){
+             $avatar = $request->file('avatar');
+             $filename = time(). '.' . $avatar->getClientOriginalExtension();
+             Image::make($avatar)->resize(300,300)->save(public_path('/uploads/avatars/'. $filename));
+
+             $user = Auth::user();
+             $user->avatar = $filename;
+             $user->save();
+         }
+
+        return view('profile', array('user'=> Auth::user()));
+
     }
 }

@@ -6,7 +6,8 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{!! secure_asset('css/main.css') !!}">
+    {!! Html::style( asset('css/main.css')) !!}
+    {{--<link rel="stylesheet" href="{!! secure_asset('css/main.css') !!}">--}}
 </head>
 <body>
 <div class="mycont">
@@ -25,13 +26,22 @@
 
             <ul class="nav navbar-nav navbar-right">
 
-                <li><a href="/">Home</a></li>
-                <li><a href="/login"> Login </a></li>
-                <li><a href="/register">Register</a></li>
+
+                @if(!Auth::check())
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login"> Login </a></li>
+                    <li><a href="/register">Register</a></li>
+                @endif
 
 
                 @if(Auth::check())
-                <li><a href="{{ route('logout')}}">Logout</a></li>
+
+                        <li><a href="{{ route('user.profile', $user->username) }}">{{$user->username}}</a></li>
+                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+
+
+                        <li><a href="{{ route('logout')}}">Logout</a></li>
+                        <li><a href="{{ route('members') }}">Members</a></li>
 
                 @endif
 
