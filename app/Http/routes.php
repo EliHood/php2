@@ -13,11 +13,21 @@
 
 
 Route::get('/dashboard',[
-    'middleware'=>'auth',
-    'uses'=>'UserController@getDashboard',
-    'as'=> 'dashboard'
+    'middleware' => 'auth',
+    'uses' => 'PostController@getDashboard',
+    'as' => 'dashboard'
 
 ]);
+
+
+Route::post('/createpost',[
+
+    'uses'=>'PostController@postCreatePost',
+    'as' => 'post.create',
+    'middleware' => 'auth'
+
+]);
+
 
 
 Route::get('/register', function(){

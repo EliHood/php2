@@ -19,7 +19,7 @@
                    <div class="col-md-12" id="member-box">
 
                     <img src="/uploads/avatars/{{$user->avatar}}" alt="" id="pro2-img">
-                    <h6><a href="/profile/{{$user->username}}">{{$user->username}}</a> </h6>
+                    <h6><a href="{{ route('user.profile', strtolower($user->username)) }}">{{$user->username}}</a></h6>
                    </div>
 
                 @endforeach

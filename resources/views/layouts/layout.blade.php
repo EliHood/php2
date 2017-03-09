@@ -36,7 +36,7 @@
 
                 @if(Auth::check())
 
-                        <li><a href="{{ route('user.profile', $user->username) }}">{{$user->username}}</a></li>
+                        <li><a href="{{ route('user.profile', strtolower($user->username)) }}">{{$user->username}}</a></li>
                         <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
 
 
@@ -64,6 +64,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    {!! Html::script( asset('js/main.js')) !!}
 
 </div>
 </body>

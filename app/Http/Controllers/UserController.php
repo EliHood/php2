@@ -5,19 +5,13 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Image;
+use Mail;
 
 use App\Http\Requests;
 
 class UserController extends Controller
 {
 
-    public function getDashboard()
-    {
-        $cookie = cookie('saw-dashboard', true, 15);
-        $user = new User();
-        return view('dashboard', array('user'=> Auth::user()), compact('users'))->withCookie($cookie);
-
-    }
 
 
     public function getWelcome()
@@ -56,6 +50,13 @@ class UserController extends Controller
         $user->password = $password;
 
         $user->save();
+
+        Mail::send('emails.welcome', ['user' => $user], function ($m) use ($user) {
+            $m->from('shankparade@gmail.com', 'This Works');
+
+            $m->to($user->email, $user->username)->subject('Your Reminder!');
+        });
+
 
         return redirect()->route('dashboard');
 

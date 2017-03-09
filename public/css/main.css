@@ -4,7 +4,7 @@
 }
 
 .mycont{
-    padding-bottom:160px;
+    padding-bottom:260px;
     position:relative;
     min-height: 1000px;
 
@@ -43,7 +43,7 @@ i{
     left:0px;
     top:0px;
 
-    background-color: tomato;
+    background-color: #000;
     height:100%;
     position:fixed;
 
@@ -61,7 +61,7 @@ h2{
 }
 
 footer{
-    background-color: #fcf8e3;
+    background-color: #dddddd ;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -93,4 +93,42 @@ footer{
 
 #member-box{
     margin:20px 0px;
+}
+
+
+.new-post{
+    margin:40px 40px;
+    padding-bottom:330px;
+}
+
+.posts{
+    margin:40px;
+    padding-bottom:120px;
+}
+
+.twit-h{
+    font-weight: bold;
+    text-decoration: none;
+    color:#000;
+    float: left;
+    display: block;
+    clear:both;
+
+
+}
+
+.twit-h a{
+    color:#000;
+}
+
+.post-bod{
+    display: block;
+    padding:10px 0px;
+    float: left;
+    clear:both;
+
+}
+
+.info{
+    clear:both;
 }
