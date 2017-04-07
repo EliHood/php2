@@ -41,7 +41,7 @@ Route::get('/{user}/profile', [
 ]);
 
 
-Route::get('/profile', [
+Route::get('/{user}/profile', [
     'uses'=>'UserController@profile',
     'middleware'=> 'auth',
     'as'=> 'profile'
