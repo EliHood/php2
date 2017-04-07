@@ -13,7 +13,6 @@
 
 
 Route::get('/dashboard',[
-    'middleware' => 'auth',
     'uses' => 'PostController@getDashboard',
     'as' => 'dashboard'
 
