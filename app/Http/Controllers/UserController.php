@@ -51,16 +51,10 @@ class UserController extends Controller
 
         $user->save();
 
-        // Mail::send('emails.welcome', ['user' => $user], function ($m) use ($user) {
-        //     $m->from('shankparade@gmail.com', 'This Works');
-
-        //     $m->to($user->email, $user->username)->subject('Your Reminder!');
-        // });
 
 
 
-
-        return view ('/profile')->withUser($user);
+        return redirect()->route('dashboard');
 
 
 

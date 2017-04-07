@@ -57,7 +57,7 @@ Route::get('/members',[
 ]);
 
 
-Route::post('/profile', 'UserController@update_avatar');
+Route::post('/{user}/profile', 'UserController@update_avatar');
 
 
 
