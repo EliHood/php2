@@ -28,8 +28,6 @@ Route::post('/createpost',[
 
 ]);
 
-
-
 Route::get('/register', function(){
     return view('register');
 });
@@ -41,7 +39,7 @@ Route::get('/{user}/profile', [
 ]);
 
 
-Route::get('/{user}/profile', [
+Route::get('/profile', [
     'uses'=>'UserController@profile',
     'middleware'=> 'auth',
     'as'=> 'profile'
