@@ -20,7 +20,7 @@ Dashboard
         <section class="new-post">
             <div class="col-md-6 col-md-offset-3">
                 <header><h4>What do you have to say?</h4></header>
-                <form class="ajax" action="{{ route('post.create') }}" method="post">
+                <form action="{{ route('post.create') }}" method="post">
                     <div class="form-group">
                         <textarea class="form-control" name="body" id="new-post" rows="5" placeholder="Your Post"></textarea>
                     </div>
