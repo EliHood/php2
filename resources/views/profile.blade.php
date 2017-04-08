@@ -15,7 +15,7 @@
         <div class=" right-content col-md-6 col-md-offset-3">
             <h2>{{$user->username}}</h2>
             <img src="/uploads/avatars/{{$user->avatar}}" alt="" id="pro-img">
-            <form enctype="multipart/form-data" action="{{ route('update.ava') }}" method="POST">
+            <form enctype="multipart/form-data" action="{{ route('update.ava') }}" method="post">
                 <label> Update Profile Image</label>
                 <input type="file" name="avatar">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
