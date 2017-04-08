@@ -57,10 +57,10 @@ Route::get('/members',[
 ]);
 
 
-Route::post('/{user}/profile',[
+Route::post('/update_image',[
 
      'uses' => 'UserController@update_avatar'
-     'as' => 'update_ava'
+     'as' => 'update.ava'
 
 ]);
 
