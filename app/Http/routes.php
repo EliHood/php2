@@ -57,7 +57,12 @@ Route::get('/members',[
 ]);
 
 
-Route::post('/{user}/profile', 'UserController@update_avatar');
+Route::post('/{user}/profile',[
+
+     'uses' => 'UserController@update_avatar'
+     'as' => 'update_ava'
+
+]);
 
 
 
